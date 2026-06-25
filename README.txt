@@ -1,3 +1,9 @@
+
+Link for vercel
+https://portfolio-e9mct1ykx-ring-chan.vercel.app
+
+
+
 To modify your portfolio (e.g., changing text, adding a new project, or updating colors), follow these steps to ensure your changes go live:
 
 * **Edit the code:** Open your project folder in your code editor (like VS Code), make your desired changes in `app/page.tsx`, and save the file.
