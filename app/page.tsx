@@ -95,6 +95,8 @@ function ProjectCard({ title, desc, tags }: { title: string; desc: string; tags:
 export default function Portfolio() {
   const stars = useStars(80);
   const [scrollY, setScrollY] = useState(0);
+  const [avatarFailed, setAvatarFailed] = useState(false);
+
   useEffect(() => {
     const onScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -296,13 +298,17 @@ export default function Portfolio() {
       <section className="hero" style={{ opacity: heroOpacity }}>
         <div className="hero__avatar-wrap">
           <div className="hero__avatar-ring" />
-          <img src="/face.jpg" alt="Ammar Balti" className="hero__avatar"
-            onError={(e) => {
-              (e.target as HTMLImageElement).style.display = "none";
-              (e.target as HTMLImageElement).nextElementSibling!.removeAttribute("style");
-            }}
-          />
-          <div className="hero__avatar-placeholder" style={{ display: "none" }}>👤</div>
+          {/* Fixed image handler to work elegantly with React virtual DOM */}
+          {!avatarFailed ? (
+            <img 
+              src="/face.jpg" 
+              alt="Ammar Balti" 
+              className="hero__avatar"
+              onError={() => setAvatarFailed(true)}
+            />
+          ) : (
+            <div className="hero__avatar-placeholder">👤</div>
+          )}
         </div>
 
         <div className="hero__nick">✦ RinChan ✦</div>
@@ -352,17 +358,18 @@ export default function Portfolio() {
         <div className="section-label"><BookOpen size={14} /> About Me</div>
         <h2 className="section-title">Who is RinChan?</h2>
         <div className="about__grid">
+          {/* Fixed raw apostrophes below into safe Next.js entities */}
           <p className="about__text">
-            I'm <span className="about__highlight">Ammar Balti</span>, a Computer Science student (2nd Semester) at{" "}
+            I&apos;m <span className="about__highlight">Ammar Balti</span>, a Computer Science student (2nd Semester) at{" "}
             <span className="about__highlight">Virtual University of Pakistan</span>, hailing from the mountains of{" "}
             <span className="about__highlight">Gilgit-Baltistan</span>. Alongside my contemporary education, I hold a{" "}
             <span className="about__highlight">Hifz e Quran</span> and completed <span className="about__highlight">Darse Nizaami</span> — a
             unique blend of classical Islamic scholarship and modern software engineering.
           </p>
           <p className="about__text" style={{ marginTop: "1rem" }}>
-            I'm passionate about <span className="about__highlight">browser extension architecture</span>,{" "}
+            I&apos;m passionate about <span className="about__highlight">browser extension architecture</span>,{" "}
             <span className="about__highlight">AI integration</span>, and crafting digital experiences that feel effortless.
-            Whether it's writing clean code or exploring the boundaries of LMS tools, I turn complexity into clarity.
+            Whether it&apos;s writing clean code or exploring the boundaries of LMS tools, I turn complexity into clarity.
           </p>
         </div>
       </section>
@@ -377,7 +384,7 @@ export default function Portfolio() {
       {/* ── PROJECTS ── */}
       <section className="section">
         <div className="section-label"><Code2 size={14} /> Projects</div>
-        <h2 className="section-title">What I've Built</h2>
+        <h2 className="section-title">What I&apos;ve Built</h2>
         <div className="proj-grid">
           <ProjectCard
             title="VU Ilmofy Extension"
@@ -402,7 +409,7 @@ export default function Portfolio() {
       {/* ── CONTACT ── */}
       <section className="section">
         <div className="section-label"><Mail size={14} /> Contact</div>
-        <h2 className="section-title">Let's Connect</h2>
+        <h2 className="section-title">Let&apos;s Connect</h2>
         <div className="contact-grid">
           <a href="tel:+923231505080" className="contact-item">
             <Phone size={20} className="contact-item__icon" />
