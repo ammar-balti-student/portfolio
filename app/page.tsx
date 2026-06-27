@@ -3,24 +3,6 @@ import { useState, useEffect, useRef } from "react";
 import { Mail, Phone, MapPin, ChevronDown, BookOpen, GraduationCap, Code2, Moon } from "lucide-react";
 
 // Fixed: Added className support to the TypeScript type and the SVG element
-// Ensure className is explicitly defined as an optional string
-function FacebookIcon({ size = 20, className }: { size?: number; className?: string }) {
-  return (
-    <svg 
-      width={size} 
-      height={size} 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="2" 
-      strokeLinecap="round" 
-      strokeLinejoin="round"
-      className={className} // This must be here to receive the class from the parent
-    >
-      <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
-    </svg>
-  );
-}
 
 // ─── Stable star data (generated once, client-only) ──────────────
 function useStars(count: number) {
@@ -336,10 +318,6 @@ export default function Portfolio() {
             </svg>
             LinkedIn
           </a>
-          <a href="https://www.facebook.com/ahbbalti" className="hero__link" target="_blank" rel="noreferrer">
-             {/* Now you can pass the className here without errors */}
-             <FacebookIcon size={16} className="your-icon-class-name" /> Facebook
-          </a>
           <a href="mailto:ahbarahvi786@gmail.com" className="hero__link">
             <Mail size={16} /> Email
           </a>
@@ -444,13 +422,6 @@ export default function Portfolio() {
             <div>
               <div className="contact-item__label">LinkedIn</div>
               <div className="contact-item__value">ammar-balti</div>
-            </div>
-          </a>
-          <a href="https://www.facebook.com/ahbbalti" target="_blank" rel="noreferrer" className="contact-item">
-            <FacebookIcon size={20} className="contact-item__icon" />
-            <div>
-              <div className="contact-item__label">Facebook</div>
-              <div className="contact-item__value">ahbbalti</div>
             </div>
           </a>
           <div className="contact-item">
