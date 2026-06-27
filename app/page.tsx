@@ -317,7 +317,7 @@ export default function Portfolio() {
 
         <div className="hero__location">
           <MapPin size={14} />
-          Barah Paeen, Khaplu · District Gangche, Gilgit-Baltistan · Pakistan
+          Barah Paeen, Khaplu · District Ganche, Gilgit-Baltistan · Pakistan
         </div>
 
         <nav className="hero__links">
