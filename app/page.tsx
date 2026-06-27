@@ -3,8 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { Mail, Phone, MapPin, ChevronDown, BookOpen, GraduationCap, Code2, Moon } from "lucide-react";
 
 // Fixed: Added className support to the TypeScript type and the SVG element
-function FacebookIcon({ size = 20, className }: { size?: number; className?: string }) {
-  return (
+function FacebookIcon({ size = 20, className }: { size?: number; className?: string }) {  return (
     <svg 
       width={size} 
       height={size} 
